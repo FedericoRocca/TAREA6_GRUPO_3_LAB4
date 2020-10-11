@@ -13,7 +13,7 @@
 	<a href="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp" style="margin-right: 5px">Agregar seguro</a>
 	<a href="/TAREA6_GRUPO_3_LAB4/ListarSeguros.jsp" style="margin-right: 5px">Listar seguros</a>
 	
-	<form method="get">
+	<form method="get" action="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp">
 		<label for="lblID">ID seguro</label><br/>
 		<label for="lblID">Descripción</label> <input type="text" name="txbDescripcion"><br/>
 		<label for="lblID">Tipo de seguro</label> <input type="text" name=""><br/>
@@ -32,7 +32,11 @@
 		    //seguro.setTipo(Integer.parseInt(request.getParameter("txbCosto")) );
 		    
 		    SeguroDAO data = new SeguroDAO();
-		    data.newSeguro(seguro);
+		    if( data.newSeguro(seguro) > 0 )
+		    {
+		        %> Seguro creado exitosamente <%
+		    }
+		    
 		}
 	%>
 </body>

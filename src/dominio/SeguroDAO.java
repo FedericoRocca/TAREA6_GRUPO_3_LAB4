@@ -19,8 +19,6 @@ public class SeguroDAO
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        
-    
         int filas=0;
         Connection cn = null;
         try
