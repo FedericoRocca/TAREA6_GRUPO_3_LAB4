@@ -1,3 +1,5 @@
+<%@ page import="dominio.Seguro" %>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,6 +11,34 @@
 <body>
 	<a href="/TAREA6_GRUPO_3_LAB4/Inicio.jsp" style="margin-right: 5px">Inicio</a>
 	<a href="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp" style="margin-right: 5px">Agregar seguro</a>
-	<a href="/TAREA6_GRUPO_3_LAB4/ListarSeguros.jsp" style="margin-right: 5px">Listar seguros</a>
+	<a href="servletSeguro?Param=1" style="margin-right: 5px">Listar seguros</a>
+	<br/>
+	<br/>
+	<strong>"Tipo de seguros de la base de datos"</strong>
+	<br/>
+	<br/>
+	<%
+		ArrayList<Seguro>listaSeguros=null;
+		if(request.getAttribute("listaS")!=null){
+			
+			listaSeguros=(ArrayList<Seguro>)request.getAttribute("listaS");
+			
+		}
+	%>
+	
+	<table border="1">
+	
+		<tr><th>ID Seguro</th><th>Descripcion Seguro</th><th>Descripcion tipo seguro</th><th>Costo contratacion</th><th>Costo maximo asegurado</th></tr>
+		<%
+			if(listaSeguros!=null)
+			for(Seguro seg : listaSeguros){	
+		%>	
+			<tr><td><%=seg.getId() %></td><td><%=seg.getDescripcion() %></td><td><%=seg.getTipo() %></td><td><%=seg.getCosto() %></td><td><%=seg.getCostoMaximoAsegurado() %></td></tr>
+		
+		<%	
+				}
+		%>
+	</table>
+	
 </body>
 </html>
