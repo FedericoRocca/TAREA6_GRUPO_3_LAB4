@@ -11,13 +11,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>TP6 Lab IV</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<a href="http://localhost:11119/TAREA6_GRUPO_3_LAB4/Inicio.jsp" style="margin-right:5px">Inicio</a>
 	<a href="http://localhost:11119/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp" style="margin-right:5px">Agregar seguro</a>
 	<a href="http://localhost:11119/TAREA6_GRUPO_3_LAB4/Listarseguros.jsp" style="margin-right:5px">Listar seguro</a>
-	<h1> Soy la página inicio </h1>
 <f:view>
 
 </f:view>
