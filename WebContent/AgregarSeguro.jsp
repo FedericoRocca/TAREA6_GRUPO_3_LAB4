@@ -13,8 +13,12 @@
 	<a href="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp" style="margin-right: 5px">Agregar seguro</a>
 	<a href="/TAREA6_GRUPO_3_LAB4/ListarSeguros.jsp" style="margin-right: 5px">Listar seguros</a>
 	
+	<%
+		Seguro seguro = new Seguro();
+	%>
+	
 	<form method="get" action="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp">
-		<label for="lblID">ID seguro</label><br/>
+		<label for="lblID">ID seguro</label>&nbsp<%=seguro.getId()%><br/>
 		<label for="lblID">Descripción</label> <input type="text" name="txbDescripcion"><br/>
 		<label for="lblID">Tipo de seguro</label> <input type="text" name=""><br/>
 		<label for="lblID">Costo de contratación</label> <input type="text" name="txbCosto"><br/>
@@ -25,7 +29,6 @@
 	<%
 		if(request.getParameter("btnAceptar") != null)
 		{
-		    Seguro seguro = new Seguro();
 		    seguro.setDescripcion( request.getParameter("txbDescripcion") );
 		    seguro.setCosto( Float.parseFloat(request.getParameter("txbCosto")) );
 		    seguro.setCostoMaximoAsegurado( Float.parseFloat(request.getParameter("txbCostoMaximo")) );

@@ -2,6 +2,7 @@ package dominio;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -10,7 +11,12 @@ public class SeguroDAO
 {
     private String host = "jdbc:mysql://localhost:3306/";
     private String user = "root";
-    private String pass = "";
+    /* 
+     *      Para poder probar c/u cambien la contraseña por la de su entorno.
+     *      También tienen que apuntar al driver correcto
+     *      Tambien tienen que agregar el "Deployment Assembly"
+    */
+    private String pass = "xxxxxxxx";
     private String dbName= "SegurosGroup";
     private String aditionalConfig = "?serverTimezone=UTC";
     
@@ -37,8 +43,8 @@ public class SeguroDAO
         }
         return filas;
     }
-public ArrayList<Seguro>obtenerSeguro(){
-    	
+    public ArrayList<Seguro>obtenerSeguro()
+    {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -74,5 +80,37 @@ public ArrayList<Seguro>obtenerSeguro(){
         }finally {}
         
     	return lista;
+    }
+    
+    public int getLastID()
+    {
+        try 
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+        } 
+        catch (ClassNotFoundException e) 
+        {
+            e.printStackTrace();
+        }
+        
+        int lastID = 0;
+        Connection cn = null;
+        try 
+        {
+            cn = DriverManager.getConnection(host+dbName+aditionalConfig, user, pass);
+            Statement st = cn.createStatement();
+            ResultSet result = st.executeQuery("select max(idSeguro) as \"idSeguro\" from seguros;");
+            result.next();
+            lastID=result.getInt("idSeguro");
+            cn.close();
+
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {}
+        
+        return lastID;
     }
 }

@@ -88,10 +88,12 @@ public class Seguro
                 + ", costoMaximoAsegurado=" + costoMaximoAsegurado + "]";
     }
     
-    public Seguro(int id, String descripcion, int tipo, float costo, float costoMaximoAsegurado)
+    public Seguro(String descripcion, int tipo, float costo, float costoMaximoAsegurado)
     {
         super();
-        this.id = id;
+        SeguroDAO data = new SeguroDAO();
+        this.id = data.getLastID() + 1;
+        System.out.println("lastID: ");
         this.descripcion = descripcion;
         this.idTipo = tipo;
         this.costo = costo;
@@ -100,7 +102,8 @@ public class Seguro
     
     public Seguro()
     {
-        id = 0;
+        SeguroDAO data = new SeguroDAO();
+        id = data.getLastID() + 1;
         descripcion = "";
         idTipo = 0;
         costo = 0;
