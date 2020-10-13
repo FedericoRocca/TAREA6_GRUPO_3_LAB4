@@ -16,7 +16,7 @@ public class SeguroDAO
      *      También tienen que apuntar al driver correcto
      *      Tambien tienen que agregar el "Deployment Assembly"
     */
-    private String pass = "xxxxxxxx";
+    private String pass = "root";
     private String dbName= "SegurosGroup";
     private String aditionalConfig = "?serverTimezone=UTC";
     
