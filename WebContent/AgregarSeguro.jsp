@@ -49,11 +49,11 @@
 		  </tr>
 		  <tr>
 		    <td><label for="lblID">Costo de contratación</label></td>
-		    <td><input type="text" name="txbCosto"></td>
+		    <td><input type="number" name="txbCosto"></td>
 		  </tr>
 		  <tr>
 		    <td><label for="lblID">Costo máximo asegurado</label></td>
-		    <td><input type="text" name="txbCostoMaximo"></td>
+		    <td><input type="number" name="txbCostoMaximo"></td>
 		  </tr>
 		  <tr>
 		    <td><input type="submit" name="btnAceptar" value="Aceptar"></td>
