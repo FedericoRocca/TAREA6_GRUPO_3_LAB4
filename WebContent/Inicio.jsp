@@ -9,7 +9,7 @@
 <body>
 	<a href="/TAREA6_GRUPO_3_LAB4/Inicio.jsp" style="margin-right: 5px">Inicio</a>
 	<a href="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp" style="margin-right: 5px">Agregar seguro</a>
-	<a href="/TAREA6_GRUPO_3_LAB4/ListarSeguros.jsp" style="margin-right: 5px">Listar seguros</a>
+	<a href="servletSeguro?Param=1" style="margin-right: 5px">Listar seguros</a>
 	<h1>Soy la página inicio</h1>
 </body>
 </html>

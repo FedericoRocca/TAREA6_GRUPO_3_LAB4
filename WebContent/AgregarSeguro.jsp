@@ -14,7 +14,7 @@
 <body>
 	<a href="/TAREA6_GRUPO_3_LAB4/Inicio.jsp" style="margin-right: 5px">Inicio</a>
 	<a href="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp" style="margin-right: 5px">Agregar seguro</a>
-	<a href="/TAREA6_GRUPO_3_LAB4/ListarSeguros.jsp" style="margin-right: 5px">Listar seguros</a>
+	<a href="servletSeguro?Param=1" style="margin-right: 5px">Listar seguros</a>
 	
 	<%
 		Seguro seguro = new Seguro();
@@ -23,7 +23,7 @@
 		tipoSeguro = sDao.getTiposSeguros();
 	%>
 	
-	<form method="get" action="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp">
+	<form method="get" action="AltaSeguro">
 		<table>
 		<tbody>
 		  <tr>
@@ -60,35 +60,15 @@
 		  </tr>
 		</tbody>
 		</table>
-		
 	</form>
 	
 	<%
-		try
+		if( request.getAttribute("resultMessage") != null )
 		{
-		    if(request.getParameter("btnAceptar") != null)
-			{
-		        seguro.setDescripcion( request.getParameter("txbDescripcion") );
-			    seguro.setCosto( Float.parseFloat(request.getParameter("txbCosto")) );
-			    seguro.setCostoMaximoAsegurado( Float.parseFloat(request.getParameter("txbCostoMaximo")) );
-			    seguro.setTipo(Integer.parseInt(request.getParameter("TiposSeguro")) );
-			    
-			    SeguroDAO data = new SeguroDAO();
-			    if( data.newSeguro(seguro) > 0 )
-			    {
-			        %> Seguro creado exitosamente <%
-			    }
-			}
+		    %>
+		    <%=request.getAttribute("resultMessage").toString()%>
+		    <%
 		}
-		catch(NumberFormatException ne)
-		{
-		    %> Alguno de los campos no se completó correctamente <%
-		}
-		catch(Exception e)
-		{
-		    %> Hubo un error al dar de alta el seguro <%
-		}
-		finally{}
 	%>
 </body>
 </html>

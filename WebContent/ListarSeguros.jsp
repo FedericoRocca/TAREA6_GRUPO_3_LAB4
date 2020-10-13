@@ -14,7 +14,7 @@
 	<a href="servletSeguro?Param=1" style="margin-right: 5px">Listar seguros</a>
 	<br/>
 	<br/>
-	<strong>"Tipo de seguros de la base de datos"</strong>
+	<strong>Seguros</strong>
 	<br/>
 	<br/>
 	<%
