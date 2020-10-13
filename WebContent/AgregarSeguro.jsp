@@ -24,21 +24,43 @@
 	%>
 	
 	<form method="get" action="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp">
-		<label for="lblID">ID seguro</label>&nbsp<%=seguro.getId()%><br/>
-		<label for="lblID">Descripción</label> <input type="text" name="txbDescripcion"><br/>
+		<table>
+		<tbody>
+		  <tr>
+		    <td><label for="lblID">ID seguro</label></td>
+		    <td><%=seguro.getId()%></td>
+		  </tr>
+		  <tr>
+		    <td><label for="lblID">Descripción</label></td>
+		    <td><input type="text" name="txbDescripcion"></td>
+		  </tr>
+		  <tr>
+		    <td><label for="TiposSeguro">Tipo de seguro:</label></td>
+		    <td>
+			    <select name="TiposSeguro" id="selectTipos">
+			  	<% 
+					for (TipoSeguro ts:tipoSeguro)
+					{
+					    %><option value="<%=ts.getIdTipo()%>"><%=ts.getDescripcion()%></option><%
+					}
+			  	%>
+				</select>
+		    </td>
+		  </tr>
+		  <tr>
+		    <td><label for="lblID">Costo de contratación</label></td>
+		    <td><input type="text" name="txbCosto"></td>
+		  </tr>
+		  <tr>
+		    <td><label for="lblID">Costo máximo asegurado</label></td>
+		    <td><input type="text" name="txbCostoMaximo"></td>
+		  </tr>
+		  <tr>
+		    <td><input type="submit" name="btnAceptar" value="Aceptar"></td>
+		  </tr>
+		</tbody>
+		</table>
 		
-		<label for="TiposSeguro">Tipo de seguro:</label>
-		<select name="TiposSeguro" id="selectTipos">
-		  	<% 
-				for (TipoSeguro ts:tipoSeguro)
-				{
-				    %><option value="<%=ts.getIdTipo()%>"><%=ts.getDescripcion()%></option><%
-				}
-		  	%>
-		</select><br/>
-		<label for="lblID">Costo de contratación</label> <input type="text" name="txbCosto"><br/>
-		<label for="lblID">Costo máximo asegurado</label> <input type="text" name="txbCostoMaximo"><br/>
-		<input type="submit" name="btnAceptar" value="Aceptar">
 	</form>
 	
 	<%
