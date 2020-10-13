@@ -64,20 +64,31 @@
 	</form>
 	
 	<%
-		if(request.getParameter("btnAceptar") != null)
+		try
 		{
-		    seguro.setDescripcion( request.getParameter("txbDescripcion") );
-		    seguro.setCosto( Float.parseFloat(request.getParameter("txbCosto")) );
-		    seguro.setCostoMaximoAsegurado( Float.parseFloat(request.getParameter("txbCostoMaximo")) );
-		    seguro.setTipo(Integer.parseInt(request.getParameter("TiposSeguro")) );
-		    
-		    SeguroDAO data = new SeguroDAO();
-		    if( data.newSeguro(seguro) > 0 )
-		    {
-		        %> Seguro creado exitosamente <%
-		    }
-		    
+		    if(request.getParameter("btnAceptar") != null)
+			{
+		        seguro.setDescripcion( request.getParameter("txbDescripcion") );
+			    seguro.setCosto( Float.parseFloat(request.getParameter("txbCosto")) );
+			    seguro.setCostoMaximoAsegurado( Float.parseFloat(request.getParameter("txbCostoMaximo")) );
+			    seguro.setTipo(Integer.parseInt(request.getParameter("TiposSeguro")) );
+			    
+			    SeguroDAO data = new SeguroDAO();
+			    if( data.newSeguro(seguro) > 0 )
+			    {
+			        %> Seguro creado exitosamente <%
+			    }
+			}
 		}
+		catch(NumberFormatException ne)
+		{
+		    %> Alguno de los campos no se completó correctamente <%
+		}
+		catch(Exception e)
+		{
+		    %> Hubo un error al dar de alta el seguro <%
+		}
+		finally{}
 	%>
 </body>
 </html>
