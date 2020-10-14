@@ -1,4 +1,6 @@
 <%@ page import="dominio.Seguro" %>
+<%@page import="dominio.TipoSeguroDAO"%>
+<%@page import="dominio.TipoSeguro"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -12,9 +14,30 @@
 	<a href="/TAREA6_GRUPO_3_LAB4/Inicio.jsp" style="margin-right: 5px">Inicio</a>
 	<a href="/TAREA6_GRUPO_3_LAB4/AgregarSeguro.jsp" style="margin-right: 5px">Agregar seguro</a>
 	<a href="servletSeguro?Param=1" style="margin-right: 5px">Listar seguros</a>
+	
+	<%
+		ArrayList<TipoSeguro> tipoSeguro = new ArrayList<TipoSeguro>();
+		TipoSeguroDAO sDao = new TipoSeguroDAO();
+		tipoSeguro = sDao.getTiposSeguros();
+	%>
+	
 	<br/>
 	<br/>
 	<strong>Seguros</strong>
+	<br/>
+	<br/>
+	<form method="post" action="servletSeguro">
+		Busqueda por tipo de Seguros: 
+	    <select name="TiposSeguro" id="selectTipos">
+	  	<% 
+			for (TipoSeguro ts:tipoSeguro)
+			{
+			    %><option value="<%=ts.getIdTipo()%>"><%=ts.getDescripcion()%></option><%
+			}
+	  	%>
+		</select>
+		<input type="submit" name="btnFiltrar" value="Filtrar">	
+	</form>
 	<br/>
 	<br/>
 	<%

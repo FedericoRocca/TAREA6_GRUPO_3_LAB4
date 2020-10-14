@@ -82,6 +82,44 @@ public class SeguroDAO
     	return lista;
     }
     
+	public ArrayList<Seguro> obtenerSeguro(int idTipo) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        ArrayList<Seguro> lista = new ArrayList<Seguro>();
+        Connection cn = null;
+        try {
+        	
+        	cn = DriverManager.getConnection(host+dbName+aditionalConfig, user,pass);
+        	PreparedStatement ps = cn.prepareStatement("SELECT idSeguro,descripcion,idTipo,costoContratacion,costoAsegurado FROM seguros WHERE idTipo=?");
+        	ps.setInt(1, idTipo);
+        	ResultSet rs=ps.executeQuery();
+        	
+        	while(rs.next()) {
+        		
+        		Seguro seguroRs = new Seguro();
+        		seguroRs.setId(rs.getInt("idSeguro"));
+        		seguroRs.setDescripcion(rs.getString("descripcion"));
+        		seguroRs.setTipo(rs.getInt("idTipo"));
+        		seguroRs.setCosto(rs.getFloat("costoContratacion"));
+        		seguroRs.setCostoMaximoAsegurado(rs.getFloat("costoAsegurado"));
+        		
+        		lista.add(seguroRs);
+        		
+        	}
+        	cn.close();
+        	
+        }
+        catch(Exception e){
+        	e.printStackTrace();
+        }finally {}
+        
+    	return lista;
+	}
+    
     public int getLastID()
     {
         try 

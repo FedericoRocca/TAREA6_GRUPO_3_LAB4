@@ -20,17 +20,12 @@ import dominio.SeguroDAO;
 public class servletSeguro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public servletSeguro() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(request.getParameter("Param")!=null) {
@@ -45,15 +40,21 @@ public class servletSeguro extends HttpServlet {
 		    rd.forward(request, response);
 			
 		}
-		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		if(request.getParameter("btnFiltrar")!=null) {
+			
+			SeguroDAO sDao= new SeguroDAO();
+			ArrayList<Seguro> lista=sDao.obtenerSeguro(Integer.parseInt(request.getParameter("TiposSeguro")));
+			
+			request.setAttribute("listaS", lista);
+			
+		    RequestDispatcher rd = request.getRequestDispatcher("/ListarSeguros.jsp");
+
+		    rd.forward(request, response);
+		}
 	}
 
 }
