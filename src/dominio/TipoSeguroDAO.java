@@ -54,4 +54,34 @@ public class TipoSeguroDAO
         
         return listaSeguros;
     }
+    
+    public TipoSeguro ObtenerSeguro(int id) {
+    	try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        TipoSeguro seg = new TipoSeguro();
+        Connection cn = null;
+        try {
+            
+            cn = DriverManager.getConnection(host+dbName+aditionalConfig, user,pass);
+            Statement st = cn.createStatement();
+            
+            ResultSet rs=st.executeQuery("select idTipo, descripcion from segurosgroup.tiposeguros where idtipo = "+id+ ";");
+            
+            while(rs.next()) {
+                seg.setIdTipo(rs.getInt("idTipo"));
+                seg.setDescripcion(rs.getString("descripcion"));                    
+            }
+            cn.close();
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return seg;
+    }
 }

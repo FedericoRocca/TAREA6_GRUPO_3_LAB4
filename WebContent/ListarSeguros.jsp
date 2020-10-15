@@ -56,7 +56,7 @@
 			if(listaSeguros!=null)
 			for(Seguro seg : listaSeguros){	
 		%>	
-			<tr><td><%=seg.getId() %></td><td><%=seg.getDescripcion() %></td><td><%=seg.getTipo() %></td><td><%=seg.getCosto() %></td><td><%=seg.getCostoMaximoAsegurado() %></td></tr>
+			<tr><td><%=seg.getId() %></td><td><%=seg.getDescripcion() %></td><td><%=seg.getDescripcionTipoSeguro() %></td><td><%=seg.getCosto() %></td><td><%=seg.getCostoMaximoAsegurado() %></td></tr>
 		
 		<%	
 				}

@@ -7,6 +7,7 @@ public class Seguro
     private int idTipo;
     private float costo;
     private float costoMaximoAsegurado;
+    private TipoSeguro tipo;
     
     /**
      * @return the id
@@ -71,12 +72,26 @@ public class Seguro
     {
         return costoMaximoAsegurado;
     }
+    
     /**
      * @param costoMaximoAsegurado the costoMaximoAsegurado to set
      */
     public void setCostoMaximoAsegurado(float costoMaximoAsegurado)
     {
         this.costoMaximoAsegurado = costoMaximoAsegurado;
+    }
+    
+    public String getDescripcionTipoSeguro() {
+    	return tipo.getDescripcion();
+    }
+    
+    public void SetearTipoSeguro() {
+    	if(tipo == null) {
+    		tipo = new TipoSeguro();   		
+    	}
+    	TipoSeguroDAO tsd = new TipoSeguroDAO();
+    	tipo = tsd.ObtenerSeguro(getTipo());
+    	tsd = null;
     }
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
