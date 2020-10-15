@@ -107,6 +107,7 @@ public class SeguroDAO
         		seguroRs.setTipo(rs.getInt("idTipo"));
         		seguroRs.setCosto(rs.getFloat("costoContratacion"));
         		seguroRs.setCostoMaximoAsegurado(rs.getFloat("costoAsegurado"));
+        		seguroRs.SetearTipoSeguro();
         		
         		lista.add(seguroRs);
         		
