@@ -23,7 +23,8 @@ public class AltaSeguro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     private Seguro seguro = new Seguro();
-    private ArrayList<TipoSeguro> tipoSeguro = new ArrayList<TipoSeguro>();
+    @SuppressWarnings("unused")
+	private ArrayList<TipoSeguro> tipoSeguro = new ArrayList<TipoSeguro>();
     
        
     public AltaSeguro() {

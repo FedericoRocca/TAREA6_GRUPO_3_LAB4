@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dominio.Seguro;
 import dominio.SeguroDAO;
 
-/**
- * Servlet implementation class servletSeguro
- */
+
 @WebServlet("/servletSeguro")
 public class servletSeguro extends HttpServlet {
 	private static final long serialVersionUID = 1L;

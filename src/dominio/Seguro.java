@@ -9,73 +9,53 @@ public class Seguro
     private float costoMaximoAsegurado;
     private TipoSeguro tipo;
     
-    /**
-     * @return the id
-     */
+
     public int getId()
     {
         return id;
     }
-    /**
-     * @param id the id to set
-     */
+
     public void setId(int id)
     {
         this.id = id;
     }
-    /**
-     * @return the descripcion
-     */
+
     public String getDescripcion()
     {
         return descripcion;
     }
-    /**
-     * @param descripcion the descripcion to set
-     */
+ 
     public void setDescripcion(String descripcion)
     {
         this.descripcion = descripcion;
     }
-    /**
-     * @return the tipo
-     */
+ 
     public int getTipo()
     {
         return idTipo;
     }
-    /**
-     * @param tipo the tipo to set
-     */
+
     public void setTipo(int tipo)
     {
         this.idTipo = tipo;
     }
-    /**
-     * @return the costo
-     */
+
     public float getCosto()
     {
         return costo;
     }
-    /**
-     * @param costo the costo to set
-     */
+
     public void setCosto(float costo)
     {
         this.costo = costo;
     }
-    /**
-     * @return the costoMaximoAsegurado
-     */
+
     public float getCostoMaximoAsegurado()
     {
         return costoMaximoAsegurado;
     }
     
-    /**
-     * @param costoMaximoAsegurado the costoMaximoAsegurado to set
-     */
+ 
     public void setCostoMaximoAsegurado(float costoMaximoAsegurado)
     {
         this.costoMaximoAsegurado = costoMaximoAsegurado;
@@ -93,9 +73,7 @@ public class Seguro
     	tipo = tsd.ObtenerSeguro(getTipo());
     	tsd = null;
     }
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
+
     @Override
     public String toString()
     {
